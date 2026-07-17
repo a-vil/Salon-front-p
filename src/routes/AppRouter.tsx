@@ -1,6 +1,6 @@
 ﻿import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/useAuth'
 import { AccumulatePointsPage } from '../pages/admin/AccumulatePointsPage'
 import { AdminDashboardPage } from '../pages/admin/AdminDashboardPage'
 import { AdminRewardsPage } from '../pages/admin/AdminRewardsPage'

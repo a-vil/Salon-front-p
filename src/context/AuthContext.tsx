@@ -1,31 +1,10 @@
-﻿import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react'
+﻿import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 
 import api from '../api/client'
 import { TOKEN_STORAGE_KEY } from '../lib/constants'
 import type { AuthResponse, ClientProfile, LoginPayload, RegisterPayload, User } from '../types/auth'
-
-interface AuthContextValue {
-  user: User | null
-  token: string | null
-  isAuthenticated: boolean
-  isLoading: boolean
-  clientProfile: ClientProfile | null
-  clientDisplayName: string
-  login: (payload: LoginPayload) => Promise<User>
-  register: (payload: RegisterPayload) => Promise<User>
-  logout: () => void
-  refreshMe: () => Promise<User | null>
-}
-
-const AuthContext = createContext<AuthContextValue | undefined>(undefined)
+import { AuthContext } from './AuthContext'
+import type { AuthContextValue } from './AuthContext'
 
 interface AuthProviderProps {
   children: ReactNode
@@ -125,14 +104,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-}
-
-export function useAuth() {
-  const context = useContext(AuthContext)
-
-  if (!context) {
-    throw new Error('useAuth debe usarse dentro de AuthProvider')
-  }
-
-  return context
 }

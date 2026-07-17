@@ -18,6 +18,9 @@ Dashboard de un **programa de fidelización** para un salón de belleza, con dos
 
 [https://mini-salon-front.vercel.app](https://mini-salon-front.vercel.app)
 
+> ⚠️ El backend usa el plan gratuito de Render, que puede tardar hasta 50 segundos
+> en activarse en la primera petición si estuvo inactivo.
+
 ## Credenciales de Prueba
 
 Puedes probar la aplicación con estas cuentas demo:
