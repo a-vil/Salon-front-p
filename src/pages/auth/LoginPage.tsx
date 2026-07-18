@@ -75,7 +75,7 @@ export function LoginPage() {
           <div className="login-editorial-panel-inner">
             <div className="login-editorial-heading">
               <span className="login-editorial-badge subtle">Acceso seguro</span>
-              <h2>Login to your account</h2>
+              <h2>Accede a tu panel</h2>
               <p>Ingresa con tu correo o celular para continuar donde dejaste tu cuenta.</p>
             </div>
 

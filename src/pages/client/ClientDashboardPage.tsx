@@ -110,11 +110,11 @@ export function ClientDashboardPage() {
               <div className="visit-history-list">
                 {recentMovements.map((movement) => (
                   <article key={movement.id} className="visit-history-item">
-                    <div className="visit-history-icon">{movement.tipo === 'canje' ? '?' : '?'}</div>
+                    <div className="visit-history-icon">{movement.tipo === 'canje' ? '↻' : '↑'}</div>
                     <div className="visit-history-copy">
                       <h3>{formatMovementLabel(movement)}</h3>
                       <p>
-                        {new Date(movement.fecha_movimiento).toLocaleDateString()} ? {movement.tipo === 'canje' ? 'Canje confirmado' : 'Puntos acumulados'}
+                        {new Date(movement.fecha_movimiento).toLocaleDateString()} · {movement.tipo === 'canje' ? 'Canje confirmado' : 'Puntos acumulados'}
                       </p>
                     </div>
                     <div className="visit-history-meta">
