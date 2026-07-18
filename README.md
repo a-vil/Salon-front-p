@@ -9,6 +9,7 @@
 ![Vercel](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white)
 ![License](https://img.shields.io/badge/License-PolyForm_Noncommercial_1.0.0-ff69b4)
+[![Build & Lint](https://github.com/a-vil/Salon-front-p/actions/workflows/build.yml/badge.svg)](https://github.com/a-vil/Salon-front-p/actions/workflows/build.yml)
 
 ---
 
