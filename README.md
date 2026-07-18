@@ -1,4 +1,4 @@
-# Mini-Salon-Front
+# Sistema Fidelización - Front
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
@@ -16,7 +16,7 @@ Dashboard de un **programa de fidelización** para un salón de belleza, con dos
 
 ## Demo
 
-[https://mini-salon-front.vercel.app](https://mini-salon-front.vercel.app)
+[https://salon-front-p.vercel.app](https://salon-front-p.vercel.app)
 
 > ⚠️ El backend usa el plan gratuito de Render, que puede tardar hasta 50 segundos
 > en activarse en la primera petición si estuvo inactivo.
@@ -88,8 +88,8 @@ src/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/mini-salon-front.git
-cd mini-salon-front
+git clone https://github.com/tu-usuario/fide-salon-front.git
+cd fide-salon-front
 
 # (Opcional) Configurar variable de entorno para la API
 # Copia el archivo de ejemplo y editarlo si es necesario
@@ -121,14 +121,14 @@ npm run preview
 
 | Variable | Obligatorio | Descripción |
 |----------|-------------|-------------|
-| `VITE_API_URL` | No | URL base de la API. Por defecto apunta a `https://mini-salon-back.onrender.com` |
+| `VITE_API_URL` | No | URL base de la API. Por defecto apunta a `https://sis-fide-api.onrender.com` |
 
 Copia `.env.example` a `.env` si necesitas sobrescribir la URL del backend.
 
 ## Backend
 
 La aplicación consume una API REST desplegada en Render:  
-[https://mini-salon-back.onrender.com](https://mini-salon-back.onrender.com)
+[https://sis-fide-api.onrender.com](https://sis-fide-api.onrender.com)
 
 ## Licencia
 

@@ -53,7 +53,7 @@ export function LoginPage() {
       <div className="auth-editorial-card login-editorial-card">
         <aside className="auth-editorial-hero login-editorial-hero">
           <div className="login-editorial-hero-inner">
-            <span className="login-editorial-badge">Mini Salon</span>
+            <span className="login-editorial-badge">Fide Salon</span>
             <div className="login-editorial-copy">
               <p className="login-editorial-overline">Herencia contemporanea</p>
               <h1>Ingresa a tu cuenta.</h1>

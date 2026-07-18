@@ -13,7 +13,7 @@ export function AuthLayout({ eyebrow, title, description, children }: AuthLayout
       <div className="auth-editorial-card auth-card">
         <aside className="auth-editorial-hero auth-hero">
           <div className="stack">
-            <span className="auth-kicker">Mini Salon</span>
+            <span className="auth-kicker">Fide Salon</span>
             <div className="stack">
               <span className="auth-kicker">{eyebrow}</span>
               <h1>{title}</h1>

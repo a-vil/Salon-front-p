@@ -63,7 +63,7 @@ export function DashboardLayout({ role, children, actions, clientName }: Dashboa
 
         <div className="mobile-topbar-brand">
           <span>MS</span>
-          <strong>Mini Salon</strong>
+          <strong>Fide Salon</strong>
         </div>
       </header>
 
@@ -77,7 +77,7 @@ export function DashboardLayout({ role, children, actions, clientName }: Dashboa
       <div className="dashboard-shell">
         <aside className={`sidebar${isSidebarOpen ? ' open' : ''}`}>
           <div className="brand-mark">MS</div>
-          <h1>Mini Salon</h1>
+          <h1>Fide Salon</h1>
           <p>
             {role === 'admin'
               ? 'Control operativo del programa de fidelizacion del salon.'
