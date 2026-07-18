@@ -88,8 +88,8 @@ src/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/fide-salon-front.git
-cd fide-salon-front
+git clone https://github.com/a-vil/Salon-front-p.git
+cd Salon-front-p
 
 # (Opcional) Configurar variable de entorno para la API
 # Copia el archivo de ejemplo y editarlo si es necesario
