@@ -70,18 +70,21 @@ Puedes probar la aplicación con estas cuentas demo:
 
 ```
 src/
-├── api/client.ts          # Instancia de Axios con interceptor JWT
-├── context/AuthContext    # Estado global de autenticación
-├── layouts/               # Layouts compartidos (Dashboard y Auth)
+├── api/client.ts               # Instancia de Axios con interceptor JWT
+├── context/
+│   ├── AuthContext.tsx         # Componente AuthProvider (estado global de autenticación)
+│   ├── authContextDefinition.ts # Definición del contexto y tipos (AuthContextValue)
+│   └── useAuth.ts              # Hook personalizado para consumir el contexto
+├── layouts/                    # Layouts compartidos (Dashboard y Auth)
 ├── pages/
-│   ├── admin/             # 6 páginas para rol admin
-│   ├── auth/              # Login y Register
-│   └── client/            # 4 páginas para rol cliente
-├── routes/AppRouter       # Definición de rutas y guards por rol
-├── styles/                # Hojas de estilo CSS
-├── types/auth.ts          # Interfaces de TypeScript
-├── App.tsx                # Componente raíz
-└── main.tsx               # Entry point
+│   ├── admin/                  # 6 páginas para rol admin
+│   ├── auth/                   # Login y Register
+│   └── client/                 # 4 páginas para rol cliente
+├── routes/AppRouter            # Definición de rutas y guards por rol
+├── styles/                     # Hojas de estilo CSS
+├── types/auth.ts               # Interfaces de TypeScript
+├── App.tsx                     # Componente raíz
+└── main.tsx                    # Entry point
 ```
 
 ## Instalación y Uso Local
