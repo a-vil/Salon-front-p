@@ -74,7 +74,7 @@ src/
 ├── api/client.ts               # Instancia de Axios con interceptor JWT
 ├── context/
 │   ├── AuthContext.tsx         # Componente AuthProvider (estado global de autenticación)
-│   ├── authContextDefinition.ts # Definición del contexto y tipos (AuthContextValue)
+│   ├── authContextDef.ts       # Definición del contexto y tipos (AuthContextValue)
 │   └── useAuth.ts              # Hook personalizado para consumir el contexto
 ├── layouts/                    # Layouts compartidos (Dashboard y Auth)
 ├── pages/
