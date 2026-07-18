@@ -3,8 +3,8 @@
 import api from '../api/client'
 import { TOKEN_STORAGE_KEY } from '../lib/constants'
 import type { AuthResponse, ClientProfile, LoginPayload, RegisterPayload, User } from '../types/auth'
-import { AuthContext } from './AuthContext'
-import type { AuthContextValue } from './AuthContext'
+import { AuthContext } from './AuthContextDef'
+import type { AuthContextValue } from './AuthContextDef'
 
 interface AuthProviderProps {
   children: ReactNode
