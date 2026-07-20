@@ -68,7 +68,7 @@ export function ClientDashboardPage() {
               </div>
 
               <div className="loyalty-standing-badge" aria-hidden="true">
-                <span>?</span>
+                <span>★</span>
               </div>
 
               <div className="loyalty-progress-block">

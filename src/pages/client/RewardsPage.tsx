@@ -1,27 +1,30 @@
 ﻿import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import api from '../../api/client'
 import { DashboardLayout } from '../../layouts/DashboardLayout'
-import type { ClientPoints, Reward } from '../../types/auth'
+import type { ClientPoints, Redeem, Reward } from '../../types/auth'
 
 export function RewardsPage() {
   const [rewards, setRewards] = useState<Reward[]>([])
   const [points, setPoints] = useState<ClientPoints | null>(null)
   const [quantities, setQuantities] = useState<Record<number, number>>({})
   const [isLoading, setIsLoading] = useState(true)
+  const [hasPendingRedeem, setHasPendingRedeem] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchRewards = async () => {
       try {
         setError(null)
-        const [rewardsResponse, pointsResponse] = await Promise.all([
+        const [rewardsResponse, pointsResponse, redeemsResponse] = await Promise.all([
           api.get<Reward[]>('/recompensas'),
           api.get<ClientPoints>('/puntos/mis-puntos'),
+          api.get<Redeem[]>('/canjes/mis-canjes'),
         ])
         setRewards(rewardsResponse.data)
         setPoints(pointsResponse.data)
+        setHasPendingRedeem(redeemsResponse.data.some((r) => r.estado === 'pendiente'))
       } catch {
         setError('No se pudieron cargar las recompensas.')
       } finally {
@@ -53,12 +56,14 @@ export function RewardsPage() {
   const requestRedeem = async (rewardId: number) => {
     try {
       setError(null)
-      setSuccess(null)
       await api.post('/canjes', {
         recompensa_id: rewardId,
         cantidad: quantities[rewardId] ?? 1,
       })
-      setSuccess('Canje solicitado correctamente. Ahora espera la confirmacion del administrador.')
+      toast.success('✓  Canje solicitado correctamente. Ahora espera la confirmacion del administrador.', {
+        duration: 3500,
+      })
+      setHasPendingRedeem(true)
     } catch {
       setError('No se pudo solicitar el canje. Revisa tu saldo o si ya tienes un canje pendiente.')
     }
@@ -68,7 +73,6 @@ export function RewardsPage() {
     <DashboardLayout role="cliente" clientName="Recompensas disponibles">
       {isLoading ? <div className="info-banner"><p>Cargando recompensas...</p></div> : null}
       {error ? <div className="message error">{error}</div> : null}
-      {success ? <div className="message success">{success}</div> : null}
 
       {!isLoading && !error ? (
         <section className="rewards-program">
@@ -81,6 +85,7 @@ export function RewardsPage() {
               <span>Total puntos acumulados</span>
               <strong>{(points?.saldo_puntos ?? 0).toLocaleString()}</strong>
               <small>pts</small>
+              <p className="rewards-points-note">Los puntos se descuentan al confirmar el canje, no al solicitarlo.</p>
             </div>
             <div className="rewards-balance-mark" aria-hidden="true">MS</div>
           </article>
@@ -96,8 +101,8 @@ export function RewardsPage() {
                 <article key={reward.id} className="reward-card">
                   <div className="reward-card-copy">
                     <h3>{reward.nombre}</h3>
-                    <span className={reward.activo ? 'reward-state' : 'reward-state inactive'}>
-                      {reward.activo ? 'Disponible' : 'Inactiva'}
+                    <span className={'reward-state' + (!reward.activo ? ' inactive' : hasPendingRedeem ? ' waiting' : '')}>
+                      {!reward.activo ? 'Inactiva' : hasPendingRedeem ? 'En espera' : 'Disponible'}
                     </span>
                     <p>{reward.descripcion ?? 'Sin descripcion disponible.'}</p>
                   </div>
@@ -126,8 +131,8 @@ export function RewardsPage() {
                     </div>
                   </div>
 
-                  <button type="button" className="reward-redeem-button" disabled={!reward.activo} onClick={() => void requestRedeem(reward.id)}>
-                    Canjear recompensa
+                  <button type="button" className="reward-redeem-button" disabled={!reward.activo || hasPendingRedeem} onClick={() => void requestRedeem(reward.id)}>
+                    {hasPendingRedeem ? 'Solicitud pendiente' : 'Canjear recompensa'}
                   </button>
                 </article>
               ))}
