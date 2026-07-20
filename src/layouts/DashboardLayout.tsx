@@ -39,7 +39,7 @@ export function DashboardLayout({ role, children, actions, clientName }: Dashboa
   const { logout, clientDisplayName } = useAuth()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const navItems = role === 'admin' ? adminNav : clientNav
-  const sidebarName = role === 'cliente' ? clientDisplayName : clientName ?? 'Cliente'
+  const sidebarName = role === 'cliente' ? clientDisplayName : (clientName ?? 'Admin')
 
   const handleLogout = () => {
     logout()
