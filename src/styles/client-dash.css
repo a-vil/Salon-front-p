@@ -172,7 +172,7 @@
 }
 
 .visit-history-copy p {
-  color: rgba(236, 221, 196, 0.68);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -184,7 +184,7 @@
 }
 
 .visit-history-meta span {
-  color: rgba(236, 221, 196, 0.6);
+  color: var(--text-secondary);
   font-size: 0.94rem;
 }
 
@@ -209,7 +209,7 @@
 
 .movement-ledger-heading p,
 .rewards-program-heading p {
-  color: rgba(236, 221, 196, 0.68);
+  color: var(--text-secondary);
   font-size: 0.82rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -334,7 +334,7 @@
 
 .movement-log-row time,
 .movement-log-value {
-  color: rgba(236, 221, 196, 0.72);
+  color: var(--text-secondary);
   font-size: 0.88rem;
 }
 
@@ -420,7 +420,7 @@
 }
 
 .reward-card p {
-  color: rgba(236, 221, 196, 0.64);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.55;
   max-height: 4.7em;

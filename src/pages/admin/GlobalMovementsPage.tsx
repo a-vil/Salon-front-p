@@ -1,5 +1,6 @@
 ﻿import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import api from '../../api/client'
 import { DashboardLayout } from '../../layouts/DashboardLayout'
@@ -28,7 +29,6 @@ export function GlobalMovementsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isRevertingId, setIsRevertingId] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const fetchHistory = async () => {
     try {
@@ -53,12 +53,11 @@ export function GlobalMovementsPage() {
     }
 
     setError(null)
-    setSuccessMessage(null)
     setIsRevertingId(movementId)
 
     try {
       const response = await api.delete<DeleteMovementResponse>(`/puntos/movimientos/${movementId}`)
-      setSuccessMessage(response.data.detail)
+      toast.success(response.data.detail)
       await fetchHistory()
     } catch (error) {
       setError(getErrorMessage(error, 'No se pudo revertir el movimiento.'))
@@ -71,7 +70,6 @@ export function GlobalMovementsPage() {
     <DashboardLayout role="admin">
       {isLoading ? <div className="info-banner"><p>Cargando movimientos...</p></div> : null}
       {error ? <div className="message error">{error}</div> : null}
-      {successMessage ? <div className="message success">{successMessage}</div> : null}
 
       {history ? (
         <section className="surface-panel">

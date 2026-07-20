@@ -189,7 +189,7 @@
 .metric-card, .data-card { border-radius: 22px; padding: 22px; }
 .metric-card { display: grid; gap: 10px; border: 1px solid rgba(23, 52, 46, 0.05); }
 .metric-card strong { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--text-primary); line-height: 1; }
-.metric-card span, .data-card p, .list-meta, .empty-state p, .info-banner p { color: var(--text-secondary); line-height: 1.65; }
+.metric-card span, .metric-card p, .data-card p, .list-meta, .empty-state p, .info-banner p { color: var(--text-secondary); line-height: 1.65; }
 .data-card { display: grid; gap: 14px; }
 .data-card h3 { color: var(--text-primary); font-size: 1.6rem; line-height: 1.05; }
 .data-row { display: flex; justify-content: space-between; gap: 14px; padding-top: 12px; border-top: 1px solid var(--border); }

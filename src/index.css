@@ -17,7 +17,7 @@
   --danger: #9a3d35;
   --danger-soft: rgba(154, 61, 53, 0.12);
   --text-primary: #fff3d8;
-  --text-secondary: rgba(236, 221, 196, 0.72);
+  --text-secondary: rgb(236, 221, 196);
   --text-subtle: rgba(236, 221, 196, 0.56);
   --accent-ui: #efbf73;
   --shadow-lg: 0 28px 70px rgba(56, 39, 23, 0.12);

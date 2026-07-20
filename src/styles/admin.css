@@ -35,7 +35,7 @@
 
 .admin-summary-copy p {
   max-width: 64ch;
-  color: rgba(236, 221, 196, 0.76);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .admin-action-card p {
-  color: rgba(236, 221, 196, 0.72);
+  color: var(--text-secondary);
   line-height: 1.55;
 }
 
@@ -145,7 +145,7 @@
 .admin-payment-header p {
   max-width: 58ch;
   margin-top: 8px;
-  color: rgba(236, 221, 196, 0.72);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -208,7 +208,7 @@
 }
 
 .admin-selected-client p {
-  color: rgba(236, 221, 196, 0.72);
+  color: var(--text-secondary);
   line-height: 1.55;
 }
 
@@ -305,7 +305,7 @@
 .admin-rewards-header p {
   max-width: 56ch;
   margin-top: 8px;
-  color: rgba(236, 221, 196, 0.72);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -335,7 +335,7 @@
 }
 
 .admin-reward-card p {
-  color: rgba(236, 221, 196, 0.72);
+  color: var(--text-secondary);
   line-height: 1.55;
 }
 
@@ -412,7 +412,7 @@
   .admin-mobile-movement-head p,
   .admin-mobile-movement-head time,
   .admin-mobile-movement-description {
-    color: rgba(236, 221, 196, 0.68);
+    color: var(--text-secondary);
     font-size: 0.86rem;
     line-height: 1.5;
   }
@@ -479,4 +479,12 @@
 .admin-action-card a,
 .admin-link-button {
   color: var(--accent-ui);
+}
+
+#cliente-search-noautofill:-webkit-autofill,
+#cliente-search-noautofill:-webkit-autofill:hover,
+#cliente-search-noautofill:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fffaf3 inset !important;
+  -webkit-text-fill-color: #2d241d !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

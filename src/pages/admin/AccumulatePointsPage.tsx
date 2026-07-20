@@ -1,6 +1,7 @@
 ﻿import axios from 'axios'
 import type { FormEvent } from 'react'
 import { useEffect, useMemo, useState } from 'react'
+import { toast } from 'sonner'
 
 import api from '../../api/client'
 import { DashboardLayout } from '../../layouts/DashboardLayout'
@@ -51,7 +52,6 @@ export function AccumulatePointsPage() {
   const [montoCompra, setMontoCompra] = useState('')
   const [descripcion, setDescripcion] = useState('')
   const [result, setResult] = useState<AccumulateResponse | null>(null)
-  const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -95,7 +95,6 @@ export function AccumulatePointsPage() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setError(null)
-    setSuccessMessage(null)
     setResult(null)
     setIsSubmitting(true)
 
@@ -106,7 +105,7 @@ export function AccumulatePointsPage() {
         descripcion: descripcion || undefined,
       })
       setResult(response.data)
-      setSuccessMessage('Pago registrado y puntos acumulados correctamente.')
+      toast.success('✓ Pago registrado y puntos acumulados correctamente.', { duration: 3500 })
     } catch (error) {
       setError(getErrorMessage(error, 'No se pudo registrar el pago y acumular puntos.'))
     } finally {
@@ -125,12 +124,11 @@ export function AccumulatePointsPage() {
     }
 
     setError(null)
-    setSuccessMessage(null)
     setIsDeleting(true)
 
     try {
       const response = await api.delete<DeleteMovementResponse>(`/puntos/movimientos/${result.movimiento_id}`)
-      setSuccessMessage(response.data.detail)
+      toast.success(response.data.detail, { duration: 3500 })
       setResult(null)
       setMontoCompra('')
       setDescripcion('')
@@ -146,7 +144,6 @@ export function AccumulatePointsPage() {
       role="admin">
       {isLoading ? <div className="info-banner"><p>Cargando clientes...</p></div> : null}
       {error ? <div className="message error">{error}</div> : null}
-      {successMessage ? <div className="message success">{successMessage}</div> : null}
 
       {!isLoading ? (
         <section className="admin-payment-panel">
@@ -159,9 +156,9 @@ export function AccumulatePointsPage() {
 
           <div className="admin-payment-search">
             <div className="field">
-              <label htmlFor="buscar-cliente">Buscar cliente</label>
+              <label htmlFor="cliente-search-noautofill">Buscar cliente</label>
               <input
-                id="buscar-cliente"
+                id="cliente-search-noautofill"
                 className="input"
                 value={searchTerm}
                 onChange={(event) => {
@@ -169,6 +166,7 @@ export function AccumulatePointsPage() {
                   setSelectedClient(null)
                 }}
                 placeholder="Ejemplo: maria, lopez, 999888777, maria@test.com o 12345678"
+                autoComplete="off"
               />
             </div>
           </div>

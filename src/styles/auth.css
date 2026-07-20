@@ -176,7 +176,7 @@
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   letter-spacing: -0.04em;
 }
-.section-heading p { color: rgba(236, 221, 196, 0.68); line-height: 1.7; }
+.section-heading p { color: var(--text-secondary); line-height: 1.7; }
 
 .field { display: grid; gap: 8px; }
 .field label {
@@ -234,7 +234,7 @@
   border: 1px solid rgba(154, 61, 53, 0.16);
 }
 
-.auth-switch { margin-top: 24px; color: rgba(236, 221, 196, 0.68); }
+.auth-switch { margin-top: 24px; color: var(--text-secondary); }
 .auth-switch a { color: #efbf73; text-decoration: none; font-weight: 700; }
 
 .form-grid.two-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -360,7 +360,7 @@
 .login-editorial-heading p,
 .login-editorial-switch,
 .login-editorial-meta span {
-  color: rgba(236, 221, 196, 0.68);
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
