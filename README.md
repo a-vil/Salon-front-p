@@ -31,6 +31,26 @@ Puedes probar la aplicación con estas cuentas demo:
 | Administrador | `admin@example.com` | `Admin123!` |
 | Cliente | `cliente@example.com` | `Cliente123!` |
 
+## Capturas
+
+### Cliente
+
+![Login](docs/login.png)
+![Dashboard Cliente](docs/cli-dashboard.png)
+![Recompensas](docs/cli-recompensas.png)
+
+### Admin
+
+![Resumen](docs/ad-resumen.png)
+![Clientes](docs/ad-clientes.png)
+![Registrar pago](docs/ad-registropagos.png)
+![Movimientos](docs/ad-movimientos.png)
+![Canjes pendientes](docs/ad-canjes.png)
+
+### Flujo: solicitud de canje
+
+![Demo de canje](docs/cli-flujocanje.gif)
+
 ## Funcionalidades
 
 ### Rol Administrador
