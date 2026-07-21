@@ -8,6 +8,7 @@ export function PendingRedeemsPage() {
   const [redeems, setRedeems] = useState<Redeem[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [processingId, setProcessingId] = useState<number | null>(null)
 
   const fetchRedeems = async () => {
     try {
@@ -26,11 +27,14 @@ export function PendingRedeemsPage() {
   }, [])
 
   const handleAction = async (redeemId: number, action: 'confirmar' | 'cancelar') => {
+    setProcessingId(redeemId)
     try {
       await api.patch(`/canjes/${redeemId}/${action}`)
       await fetchRedeems()
     } catch {
       setError(`No se pudo ${action} el canje.`)
+    } finally {
+      setProcessingId(null)
     }
   }
 
@@ -75,16 +79,18 @@ export function PendingRedeemsPage() {
                           <button
                             type="button"
                             className="button-secondary"
+                            disabled={processingId === redeem.id}
                             onClick={() => void handleAction(redeem.id, 'confirmar')}
                           >
-                            Confirmar
+                            {processingId === redeem.id ? 'Confirmando...' : 'Confirmar'}
                           </button>
                           <button
                             type="button"
                             className="button-danger"
+                            disabled={processingId === redeem.id}
                             onClick={() => void handleAction(redeem.id, 'cancelar')}
                           >
-                            Cancelar
+                            {processingId === redeem.id ? 'Cancelando...' : 'Cancelar'}
                           </button>
                         </div>
                       </td>

@@ -8,6 +8,7 @@ export function AdminRewardsPage() {
   const [rewards, setRewards] = useState<Reward[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [processingId, setProcessingId] = useState<number | null>(null)
 
   const fetchRewards = async () => {
     try {
@@ -26,12 +27,15 @@ export function AdminRewardsPage() {
   }, [])
 
   const toggleReward = async (reward: Reward) => {
+    setProcessingId(reward.id)
     try {
       const endpoint = reward.activo ? `/recompensas/${reward.id}/desactivar` : `/recompensas/${reward.id}/activar`
       await api.patch(endpoint)
       await fetchRewards()
     } catch {
       setError('No se pudo actualizar el estado de la recompensa.')
+    } finally {
+      setProcessingId(null)
     }
   }
 
@@ -63,8 +67,8 @@ export function AdminRewardsPage() {
                 </div>
                 <h3>{reward.nombre}</h3>
                 <p>{reward.descripcion ?? 'Sin descripcion.'}</p>
-                <button type="button" className={reward.activo ? 'button-danger' : 'button-secondary'} onClick={() => void toggleReward(reward)}>
-                  {reward.activo ? 'Desactivar' : 'Activar'}
+                <button type="button" className={reward.activo ? 'button-danger' : 'button-secondary'} disabled={processingId === reward.id} onClick={() => void toggleReward(reward)}>
+                  {processingId === reward.id ? 'Procesando...' : reward.activo ? 'Desactivar' : 'Activar'}
                 </button>
               </article>
             ))}

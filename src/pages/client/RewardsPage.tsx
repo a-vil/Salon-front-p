@@ -11,6 +11,7 @@ export function RewardsPage() {
   const [quantities, setQuantities] = useState<Record<number, number>>({})
   const [isLoading, setIsLoading] = useState(true)
   const [hasPendingRedeem, setHasPendingRedeem] = useState(false)
+  const [isRequesting, setIsRequesting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -54,6 +55,7 @@ export function RewardsPage() {
   }
 
   const requestRedeem = async (rewardId: number) => {
+    setIsRequesting(true)
     try {
       setError(null)
       await api.post('/canjes', {
@@ -66,6 +68,8 @@ export function RewardsPage() {
       setHasPendingRedeem(true)
     } catch {
       setError('No se pudo solicitar el canje. Revisa tu saldo o si ya tienes un canje pendiente.')
+    } finally {
+      setIsRequesting(false)
     }
   }
 
@@ -131,8 +135,8 @@ export function RewardsPage() {
                     </div>
                   </div>
 
-                  <button type="button" className="reward-redeem-button" disabled={!reward.activo || hasPendingRedeem} onClick={() => void requestRedeem(reward.id)}>
-                    {hasPendingRedeem ? 'Solicitud pendiente' : 'Canjear recompensa'}
+                  <button type="button" className="reward-redeem-button" disabled={!reward.activo || hasPendingRedeem || isRequesting} onClick={() => void requestRedeem(reward.id)}>
+                    {isRequesting ? 'Solicitando...' : hasPendingRedeem ? 'Solicitud pendiente' : 'Canjear recompensa'}
                   </button>
                 </article>
               ))}
